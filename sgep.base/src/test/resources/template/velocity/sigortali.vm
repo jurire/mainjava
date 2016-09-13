@@ -1,0 +1,3 @@
+Kapsam : $sig.kapsam, 
+Şehir: $sig.sehir
+http://$contect/tescilgetir/$sig.getId()

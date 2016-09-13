@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>Mail sunucu özellikleri</comment>
+
+	<entry key="mail.host">eposta.sgk.gov.tr</entry>
+	<entry key="mail.username">25</entry>
+	<entry key="mail.password"></entry>
+	<entry key="mail.protocol">smtp</entry>
+	<entry key="mail.defaultEncoding">utf-8</entry>
+	<entry key="mm.fromAddressEmail">sgep@sgk.gov.tr</entry>
+	<entry key="mm.fromAddressName">SGEP</entry>
+	
+</properties>

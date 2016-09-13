@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<comment>Quartz genel özellikleri</comment>
+	<entry key="quartz.job.durability">true</entry>
+	<entry key="quartz.group.name">SGEP</entry>
+	<entry key="insert.all.quartz.task">false</entry>
+	<entry key="enable.quartz.tasks">true</entry> <!-- jobların calismasi icin true yapin, butun job'lar icin gerekli -->
+	
+	<entry key="org.quartz.jobStore.class">org.quartz.simpl.RAMJobStore</entry>
+	<entry key="org.quartz.jobStore.misfireThreshold">3000000</entry> <!-- 50 dk -->
+	<entry key="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</entry>
+	<entry key="org.quartz.threadPool.threadCount">25</entry>
+	<entry key="org.quartz.threadPool.threadPriority">5</entry>
+	
+	
+	<entry key="HelloJob.enabled">true</entry> <!-- test için yazılan job'un calismasini kontrol eden task -->
+	<entry key="HelloJob2.enabled">false</entry> <!-- test için yazılan job'un calismasini kontrol eden task -->
+</properties>

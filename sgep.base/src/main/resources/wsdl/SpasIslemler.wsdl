@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://servisler.spas.sgk.gov.tr" xmlns:impl="http://servisler.spas.sgk.gov.tr" xmlns:intf="http://servisler.spas.sgk.gov.tr" xmlns:tns2="http://dvo.spas.sgk.gov.tr" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://dvo.spas.sgk.gov.tr" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="KapsamSilDVO">
+    <sequence>
+     <element name="sicilNo" nillable="true" type="xsd:string"/>
+     <element name="tcKimlik" nillable="true" type="xsd:string"/>
+     <element name="kapsamID" type="xsd:int"/>
+     <element name="kapBasTar" nillable="true" type="xsd:string"/>
+     <element name="kapBitTar" nillable="true" type="xsd:string"/>
+     <element name="kapKod" type="xsd:int"/>
+     <element name="uygID" type="xsd:int"/>
+     <element name="kullaniciKodu" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="KapsamGirisDVO">
+    <sequence>
+     <element name="sicilNo" nillable="true" type="xsd:string"/>
+     <element name="kapBitTar" nillable="true" type="xsd:string"/>
+     <element name="tcKimlik" nillable="true" type="xsd:string"/>
+     <element name="kapsamID" type="xsd:int"/>
+     <element name="kapBasTar" nillable="true" type="xsd:string"/>
+     <element name="uygID" type="xsd:int"/>
+     <element name="kullaniciKodu" nillable="true" type="xsd:string"/>
+     <element name="kapKod" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="CevapDVO">
+    <sequence>
+     <element name="sonucKodu" nillable="true" type="xsd:string"/>
+     <element name="sonucMesaji" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SureliKayitGirisDVO">
+    <sequence>
+     <element name="tcKimlikNo" nillable="true" type="xsd:string"/>
+     <element name="talepTuru" nillable="true" type="xsd:string"/>
+     <element name="talepTarihi" nillable="true" type="xsd:string"/>
+     <element name="baslangicTarihi" nillable="true" type="xsd:string"/>
+     <element name="bitisTarihi" nillable="true" type="xsd:string"/>
+     <element name="aciklama" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="KpsNufusDVO">
+    <sequence>
+     <element name="tcKimlikNo" type="xsd:long"/>
+     <element name="durumu" type="xsd:int"/>
+     <element name="uyruk" type="xsd:int"/>
+     <element name="babaTcKimlikNo" type="xsd:long"/>
+     <element name="anneTcKimlikNo" type="xsd:long"/>
+     <element name="dogumTarihi" nillable="true" type="xsd:string"/>
+     <element name="medeniHal" type="xsd:int"/>
+     <element name="cinsiyet" nillable="true" type="xsd:string"/>
+     <element name="ilKodu" type="xsd:int"/>
+     <element name="ilceKodu" type="xsd:int"/>
+     <element name="ciltNo" type="xsd:int"/>
+     <element name="aileSiraNo" type="xsd:int"/>
+     <element name="bireySiraNo" type="xsd:int"/>
+     <element name="olumTarihi" nillable="true" type="xsd:string"/>
+     <element name="adi" nillable="true" type="xsd:string"/>
+     <element name="soyadi" nillable="true" type="xsd:string"/>
+     <element name="ilkSoyadi" nillable="true" type="xsd:string"/>
+     <element name="dogumYeri" nillable="true" type="xsd:string"/>
+     <element name="mahalleKoy" nillable="true" type="xsd:string"/>
+     <element name="babaAdi" nillable="true" type="xsd:string"/>
+     <element name="anaAdi" nillable="true" type="xsd:string"/>
+     <element name="guncellemeTarihi" nillable="true" type="xsd:string"/>
+     <element name="guncellemeZamani" nillable="true" type="xsd:string"/>
+     <element name="degistirenKodu" nillable="true" type="xsd:string"/>
+     <element name="mk" nillable="true" type="xsd:string"/>
+     <element name="dflag" nillable="true" type="xsd:string"/>
+     <element name="esTcKimlikNo" type="xsd:long"/>
+     <element name="sonucKodu" nillable="true" type="xsd:string"/>
+     <element name="sonucMesaji" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="KapsamOkuDVO">
+    <sequence>
+     <element name="spasTesID" type="xsd:long"/>
+     <element name="tcKimlik" nillable="true" type="xsd:string"/>
+     <element name="sicilNo" nillable="true" type="xsd:string"/>
+     <element name="kapsamID" type="xsd:int"/>
+     <element name="spKapsamID" type="xsd:int"/>
+     <element name="kapBasTar" nillable="true" type="xsd:string"/>
+     <element name="kapBitTar" nillable="true" type="xsd:string"/>
+     <element name="acDurum" nillable="true" type="xsd:string"/>
+     <element name="kapDurum" nillable="true" type="xsd:string"/>
+     <element name="kapZpgs" type="xsd:int"/>
+     <element name="kapKod" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="YurtDisiSigortaliDetayDVO">
+    <sequence>
+     <element name="cinsiyeti" nillable="true" type="xsd:string"/>
+     <element name="dogumTarihi" nillable="true" type="xsd:string"/>
+     <element name="adi" nillable="true" type="xsd:string"/>
+     <element name="soyadi" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SureliKayitListDVO">
+    <sequence>
+     <element name="talepTuru" nillable="true" type="xsd:string"/>
+     <element name="talepTarihi" nillable="true" type="xsd:string"/>
+     <element name="baslangicTarihi" nillable="true" type="xsd:string"/>
+     <element name="bitisTarihi" nillable="true" type="xsd:string"/>
+     <element name="aciklama" nillable="true" type="xsd:string"/>
+     <element name="spasSurGirID" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="KapsamBitisDVO">
+    <sequence>
+     <element name="sicilNo" nillable="true" type="xsd:string"/>
+     <element name="tcKimlik" nillable="true" type="xsd:string"/>
+     <element name="kapsamID" type="xsd:int"/>
+     <element name="kapBasTar" nillable="true" type="xsd:string"/>
+     <element name="kapBitTar" nillable="true" type="xsd:string"/>
+     <element name="kapKod" type="xsd:int"/>
+     <element name="uygID" type="xsd:int"/>
+     <element name="kullaniciKodu" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+    <schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://servisler.spas.sgk.gov.tr" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns2="http://dvo.spas.sgk.gov.tr" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://dvo.spas.sgk.gov.tr"/>
+   <element name="kapsamSilAndGirisWithBitisTarResponse">
+    <complexType>
+     <sequence>
+      <element name="kapsamSilAndGirisWithBitisTarReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sureliGirisWithBitisTar">
+    <complexType>
+     <sequence>
+      <element name="sureliKayitGirisDVO" nillable="true" type="tns2:SureliKayitGirisDVO"/>
+      <element name="uygID" type="xsd:int"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sureliGirisWithBitisTarResponse">
+    <complexType>
+     <sequence>
+      <element name="sureliGirisWithBitisTarReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamSilBySpasTesID">
+    <complexType>
+     <sequence>
+      <element name="spasTesID" type="xsd:long"/>
+      <element name="uygID" type="xsd:int"/>
+      <element name="kullaniciKodu" nillable="true" type="xsd:string"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamSilBySpasTesIDResponse">
+    <complexType>
+     <sequence>
+      <element name="kapsamSilBySpasTesIDReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kimlikdenKpsNufusGetirVeGuncelle">
+    <complexType>
+     <sequence>
+      <element name="kimlikNoS" nillable="true" type="xsd:string"/>
+      <element name="kullaniciAdi" nillable="true" type="xsd:string"/>
+      <element name="uygID" type="xsd:int"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kimlikdenKpsNufusGetirVeGuncelleResponse">
+    <complexType>
+     <sequence>
+      <element name="kimlikdenKpsNufusGetirVeGuncelleReturn" nillable="true" type="tns2:KpsNufusDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSpasTescilBySpasTesID">
+    <complexType>
+     <sequence>
+      <element name="spasTesID" type="xsd:long"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSpasTescilBySpasTesIDResponse">
+    <complexType>
+     <sequence>
+      <element name="getSpasTescilBySpasTesIDReturn" nillable="true" type="tns2:KapsamOkuDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="yurtDisiSigortaliDetayBilgileriGuncelle">
+    <complexType>
+     <sequence>
+      <element name="ysID" type="xsd:long"/>
+      <element name="yurtDisiSigortaliDetayDVO" nillable="true" type="tns2:YurtDisiSigortaliDetayDVO"/>
+      <element name="uygID" type="xsd:int"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+      <element name="kullaniciAdi" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="yurtDisiSigortaliDetayBilgileriGuncelleResponse">
+    <complexType>
+     <sequence>
+      <element name="yurtDisiSigortaliDetayBilgileriGuncelleReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sureliGirisGuncelleBySpasTesID">
+    <complexType>
+     <sequence>
+      <element name="spasSurGirID" type="xsd:long"/>
+      <element name="bitisTarihi" nillable="true" type="xsd:string"/>
+      <element name="uygID" type="xsd:int"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sureliGirisGuncelleBySpasTesIDResponse">
+    <complexType>
+     <sequence>
+      <element name="sureliGirisGuncelleBySpasTesIDReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="yurtDisiKapsamGiris">
+    <complexType>
+     <sequence>
+      <element name="kapsamGirisDVO" nillable="true" type="tns2:KapsamGirisDVO"/>
+      <element name="yurtDisiSigortaliDetayDVO" nillable="true" type="tns2:YurtDisiSigortaliDetayDVO"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="yurtDisiKapsamGirisResponse">
+    <complexType>
+     <sequence>
+      <element name="yurtDisiKapsamGirisReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSpasTescilForSicilOrTcWithKapsamID">
+    <complexType>
+     <sequence>
+      <element name="tcKimlikNo" nillable="true" type="xsd:string"/>
+      <element name="sicilNo" nillable="true" type="xsd:string"/>
+      <element name="kapsamID" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSpasTescilForSicilOrTcWithKapsamIDResponse">
+    <complexType>
+     <sequence>
+      <element name="getSpasTescilForSicilOrTcWithKapsamIDReturn" nillable="true" type="impl:ArrayOf_1030438317_594404367_nillable_KapsamOkuDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamGiris">
+    <complexType>
+     <sequence>
+      <element name="kapsamGirisDVO" nillable="true" type="tns2:KapsamGirisDVO"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamGirisResponse">
+    <complexType>
+     <sequence>
+      <element name="kapsamGirisReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSpasSureliGiris">
+    <complexType>
+     <sequence>
+      <element name="tcKimlikNo" nillable="true" type="xsd:string"/>
+      <element name="talepKodu" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSpasSureliGirisResponse">
+    <complexType>
+     <sequence>
+      <element name="getSpasSureliGirisReturn" nillable="true" type="impl:ArrayOf_1030438317_594404367_nillable_SureliKayitListDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamBitis">
+    <complexType>
+     <sequence>
+      <element name="kapsamBitisDVO" nillable="true" type="tns2:KapsamBitisDVO"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamBitisResponse">
+    <complexType>
+     <sequence>
+      <element name="kapsamBitisReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="yurtDisiKapsamGirisWithBitisTar">
+    <complexType>
+     <sequence>
+      <element name="kapsamGirisDVO" nillable="true" type="tns2:KapsamGirisDVO"/>
+      <element name="yurtDisiSigortaliDetayDVO" nillable="true" type="tns2:YurtDisiSigortaliDetayDVO"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="yurtDisiKapsamGirisWithBitisTarResponse">
+    <complexType>
+     <sequence>
+      <element name="yurtDisiKapsamGirisWithBitisTarReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamSil">
+    <complexType>
+     <sequence>
+      <element name="kapsamSilDVO" nillable="true" type="tns2:KapsamSilDVO"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamSilResponse">
+    <complexType>
+     <sequence>
+      <element name="kapsamSilReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamSilTumForTCveKapsam">
+    <complexType>
+     <sequence>
+      <element name="tcKimlikNo" nillable="true" type="xsd:string"/>
+      <element name="kapsamID" type="xsd:int"/>
+      <element name="uygID" type="xsd:int"/>
+      <element name="kullaniciKodu" nillable="true" type="xsd:string"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamSilTumForTCveKapsamResponse">
+    <complexType>
+     <sequence>
+      <element name="kapsamSilTumForTCveKapsamReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamGirisWithBitisTar">
+    <complexType>
+     <sequence>
+      <element name="kapsamGirisDVO" nillable="true" type="tns2:KapsamGirisDVO"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamGirisWithBitisTarResponse">
+    <complexType>
+     <sequence>
+      <element name="kapsamGirisWithBitisTarReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="yurtDisiKapsamSilAndGirisWithBitisTar">
+    <complexType>
+     <sequence>
+      <element name="kapsamSilDVO" nillable="true" type="tns2:KapsamSilDVO"/>
+      <element name="kapsamGirisDVO" nillable="true" type="tns2:KapsamGirisDVO"/>
+      <element name="yurtDisiSigortaliDetayDVO" nillable="true" type="tns2:YurtDisiSigortaliDetayDVO"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="yurtDisiKapsamSilAndGirisWithBitisTarResponse">
+    <complexType>
+     <sequence>
+      <element name="yurtDisiKapsamSilAndGirisWithBitisTarReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamSilTumForSicilveKapsam">
+    <complexType>
+     <sequence>
+      <element name="sicilNo" nillable="true" type="xsd:string"/>
+      <element name="kapsamID" type="xsd:int"/>
+      <element name="uygID" type="xsd:int"/>
+      <element name="kullaniciKodu" nillable="true" type="xsd:string"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamSilTumForSicilveKapsamResponse">
+    <complexType>
+     <sequence>
+      <element name="kapsamSilTumForSicilveKapsamReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSpasTescilForOnlySicilOrTc">
+    <complexType>
+     <sequence>
+      <element name="tcKimlikNo" nillable="true" type="xsd:string"/>
+      <element name="sicilNo" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSpasTescilForOnlySicilOrTcResponse">
+    <complexType>
+     <sequence>
+      <element name="getSpasTescilForOnlySicilOrTcReturn" nillable="true" type="impl:ArrayOf_1030438317_594404367_nillable_KapsamOkuDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sureliGirisSilBySpasTesID">
+    <complexType>
+     <sequence>
+      <element name="spasSurGirID" type="xsd:long"/>
+      <element name="uygID" type="xsd:int"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="sureliGirisSilBySpasTesIDResponse">
+    <complexType>
+     <sequence>
+      <element name="sureliGirisSilBySpasTesIDReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSpasTescilKapsam">
+    <complexType>
+     <sequence>
+      <element name="tcKimlikNo" nillable="true" type="xsd:string"/>
+      <element name="sicilNo" nillable="true" type="xsd:string"/>
+      <element name="kapsamGrupNo" nillable="true" type="xsd:string"/>
+      <element name="sigortaliTuru" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getSpasTescilKapsamResponse">
+    <complexType>
+     <sequence>
+      <element name="getSpasTescilKapsamReturn" nillable="true" type="impl:ArrayOf_1030438317_594404367_nillable_KapsamOkuDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="bakmaklaYukumluGiris">
+    <complexType>
+     <sequence>
+      <element name="tcKimlik" type="xsd:long"/>
+      <element name="yakinTcKimlik" type="xsd:long"/>
+      <element name="yakinlikTur" nillable="true" type="xsd:string"/>
+      <element name="uygID" type="xsd:int"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="bakmaklaYukumluGirisResponse">
+    <complexType>
+     <sequence>
+      <element name="bakmaklaYukumluGirisReturn" nillable="true" type="tns2:CevapDVO"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="kapsamSilAndGirisWithBitisTar">
+    <complexType>
+     <sequence>
+      <element name="kapsamSilDVO" nillable="true" type="tns2:KapsamSilDVO"/>
+      <element name="kapsamGirisDVO" nillable="true" type="tns2:KapsamGirisDVO"/>
+      <element name="uygSifre" nillable="true" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_1030438317_594404367_nillable_KapsamOkuDVO">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="KapsamOkuDVO" nillable="true" type="tns2:KapsamOkuDVO"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_1030438317_594404367_nillable_SureliKayitListDVO">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="SureliKayitListDVO" nillable="true" type="tns2:SureliKayitListDVO"/>
+    </sequence>
+   </complexType>
+  </schema>
+  </wsdl:types>
+  <wsdl:message name="sureliGirisWithBitisTarResponse">
+    <wsdl:part element="impl:sureliGirisWithBitisTarResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamSilTumForSicilveKapsamRequest">
+    <wsdl:part element="impl:kapsamSilTumForSicilveKapsam" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpasTescilForOnlySicilOrTcRequest">
+    <wsdl:part element="impl:getSpasTescilForOnlySicilOrTc" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sureliGirisGuncelleBySpasTesIDRequest">
+    <wsdl:part element="impl:sureliGirisGuncelleBySpasTesID" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamGirisResponse">
+    <wsdl:part element="impl:kapsamGirisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpasSureliGirisResponse">
+    <wsdl:part element="impl:getSpasSureliGirisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sureliGirisSilBySpasTesIDResponse">
+    <wsdl:part element="impl:sureliGirisSilBySpasTesIDResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamSilAndGirisWithBitisTarRequest">
+    <wsdl:part element="impl:kapsamSilAndGirisWithBitisTar" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="yurtDisiKapsamGirisWithBitisTarRequest">
+    <wsdl:part element="impl:yurtDisiKapsamGirisWithBitisTar" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamGirisRequest">
+    <wsdl:part element="impl:kapsamGiris" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kimlikdenKpsNufusGetirVeGuncelleRequest">
+    <wsdl:part element="impl:kimlikdenKpsNufusGetirVeGuncelle" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamGirisWithBitisTarRequest">
+    <wsdl:part element="impl:kapsamGirisWithBitisTar" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="yurtDisiKapsamSilAndGirisWithBitisTarResponse">
+    <wsdl:part element="impl:yurtDisiKapsamSilAndGirisWithBitisTarResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="yurtDisiKapsamGirisRequest">
+    <wsdl:part element="impl:yurtDisiKapsamGiris" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamBitisResponse">
+    <wsdl:part element="impl:kapsamBitisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamGirisWithBitisTarResponse">
+    <wsdl:part element="impl:kapsamGirisWithBitisTarResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="yurtDisiSigortaliDetayBilgileriGuncelleResponse">
+    <wsdl:part element="impl:yurtDisiSigortaliDetayBilgileriGuncelleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bakmaklaYukumluGirisResponse">
+    <wsdl:part element="impl:bakmaklaYukumluGirisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kimlikdenKpsNufusGetirVeGuncelleResponse">
+    <wsdl:part element="impl:kimlikdenKpsNufusGetirVeGuncelleResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpasTescilKapsamResponse">
+    <wsdl:part element="impl:getSpasTescilKapsamResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamSilBySpasTesIDResponse">
+    <wsdl:part element="impl:kapsamSilBySpasTesIDResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sureliGirisWithBitisTarRequest">
+    <wsdl:part element="impl:sureliGirisWithBitisTar" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamSilBySpasTesIDRequest">
+    <wsdl:part element="impl:kapsamSilBySpasTesID" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sureliGirisSilBySpasTesIDRequest">
+    <wsdl:part element="impl:sureliGirisSilBySpasTesID" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpasTescilForSicilOrTcWithKapsamIDResponse">
+    <wsdl:part element="impl:getSpasTescilForSicilOrTcWithKapsamIDResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamSilTumForTCveKapsamRequest">
+    <wsdl:part element="impl:kapsamSilTumForTCveKapsam" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpasTescilBySpasTesIDResponse">
+    <wsdl:part element="impl:getSpasTescilBySpasTesIDResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpasTescilBySpasTesIDRequest">
+    <wsdl:part element="impl:getSpasTescilBySpasTesID" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamBitisRequest">
+    <wsdl:part element="impl:kapsamBitis" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="yurtDisiKapsamGirisWithBitisTarResponse">
+    <wsdl:part element="impl:yurtDisiKapsamGirisWithBitisTarResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sureliGirisGuncelleBySpasTesIDResponse">
+    <wsdl:part element="impl:sureliGirisGuncelleBySpasTesIDResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="yurtDisiKapsamGirisResponse">
+    <wsdl:part element="impl:yurtDisiKapsamGirisResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpasTescilForSicilOrTcWithKapsamIDRequest">
+    <wsdl:part element="impl:getSpasTescilForSicilOrTcWithKapsamID" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="yurtDisiKapsamSilAndGirisWithBitisTarRequest">
+    <wsdl:part element="impl:yurtDisiKapsamSilAndGirisWithBitisTar" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpasSureliGirisRequest">
+    <wsdl:part element="impl:getSpasSureliGiris" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamSilAndGirisWithBitisTarResponse">
+    <wsdl:part element="impl:kapsamSilAndGirisWithBitisTarResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamSilTumForSicilveKapsamResponse">
+    <wsdl:part element="impl:kapsamSilTumForSicilveKapsamResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="yurtDisiSigortaliDetayBilgileriGuncelleRequest">
+    <wsdl:part element="impl:yurtDisiSigortaliDetayBilgileriGuncelle" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpasTescilKapsamRequest">
+    <wsdl:part element="impl:getSpasTescilKapsam" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamSilTumForTCveKapsamResponse">
+    <wsdl:part element="impl:kapsamSilTumForTCveKapsamResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bakmaklaYukumluGirisRequest">
+    <wsdl:part element="impl:bakmaklaYukumluGiris" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamSilResponse">
+    <wsdl:part element="impl:kapsamSilResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSpasTescilForOnlySicilOrTcResponse">
+    <wsdl:part element="impl:getSpasTescilForOnlySicilOrTcResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="kapsamSilRequest">
+    <wsdl:part element="impl:kapsamSil" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SpasIslemler">
+    <wsdl:operation name="kapsamSilAndGirisWithBitisTar">
+      <wsdl:input message="impl:kapsamSilAndGirisWithBitisTarRequest" name="kapsamSilAndGirisWithBitisTarRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:kapsamSilAndGirisWithBitisTarResponse" name="kapsamSilAndGirisWithBitisTarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sureliGirisWithBitisTar">
+      <wsdl:input message="impl:sureliGirisWithBitisTarRequest" name="sureliGirisWithBitisTarRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:sureliGirisWithBitisTarResponse" name="sureliGirisWithBitisTarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamSilBySpasTesID">
+      <wsdl:input message="impl:kapsamSilBySpasTesIDRequest" name="kapsamSilBySpasTesIDRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:kapsamSilBySpasTesIDResponse" name="kapsamSilBySpasTesIDResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kimlikdenKpsNufusGetirVeGuncelle">
+      <wsdl:input message="impl:kimlikdenKpsNufusGetirVeGuncelleRequest" name="kimlikdenKpsNufusGetirVeGuncelleRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:kimlikdenKpsNufusGetirVeGuncelleResponse" name="kimlikdenKpsNufusGetirVeGuncelleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpasTescilBySpasTesID">
+      <wsdl:input message="impl:getSpasTescilBySpasTesIDRequest" name="getSpasTescilBySpasTesIDRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getSpasTescilBySpasTesIDResponse" name="getSpasTescilBySpasTesIDResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="yurtDisiSigortaliDetayBilgileriGuncelle">
+      <wsdl:input message="impl:yurtDisiSigortaliDetayBilgileriGuncelleRequest" name="yurtDisiSigortaliDetayBilgileriGuncelleRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:yurtDisiSigortaliDetayBilgileriGuncelleResponse" name="yurtDisiSigortaliDetayBilgileriGuncelleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sureliGirisGuncelleBySpasTesID">
+      <wsdl:input message="impl:sureliGirisGuncelleBySpasTesIDRequest" name="sureliGirisGuncelleBySpasTesIDRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:sureliGirisGuncelleBySpasTesIDResponse" name="sureliGirisGuncelleBySpasTesIDResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="yurtDisiKapsamGiris">
+      <wsdl:input message="impl:yurtDisiKapsamGirisRequest" name="yurtDisiKapsamGirisRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:yurtDisiKapsamGirisResponse" name="yurtDisiKapsamGirisResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpasTescilForSicilOrTcWithKapsamID">
+      <wsdl:input message="impl:getSpasTescilForSicilOrTcWithKapsamIDRequest" name="getSpasTescilForSicilOrTcWithKapsamIDRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getSpasTescilForSicilOrTcWithKapsamIDResponse" name="getSpasTescilForSicilOrTcWithKapsamIDResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamGiris">
+      <wsdl:input message="impl:kapsamGirisRequest" name="kapsamGirisRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:kapsamGirisResponse" name="kapsamGirisResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpasSureliGiris">
+      <wsdl:input message="impl:getSpasSureliGirisRequest" name="getSpasSureliGirisRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getSpasSureliGirisResponse" name="getSpasSureliGirisResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamBitis">
+      <wsdl:input message="impl:kapsamBitisRequest" name="kapsamBitisRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:kapsamBitisResponse" name="kapsamBitisResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="yurtDisiKapsamGirisWithBitisTar">
+      <wsdl:input message="impl:yurtDisiKapsamGirisWithBitisTarRequest" name="yurtDisiKapsamGirisWithBitisTarRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:yurtDisiKapsamGirisWithBitisTarResponse" name="yurtDisiKapsamGirisWithBitisTarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamSil">
+      <wsdl:input message="impl:kapsamSilRequest" name="kapsamSilRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:kapsamSilResponse" name="kapsamSilResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamSilTumForTCveKapsam">
+      <wsdl:input message="impl:kapsamSilTumForTCveKapsamRequest" name="kapsamSilTumForTCveKapsamRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:kapsamSilTumForTCveKapsamResponse" name="kapsamSilTumForTCveKapsamResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamGirisWithBitisTar">
+      <wsdl:input message="impl:kapsamGirisWithBitisTarRequest" name="kapsamGirisWithBitisTarRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:kapsamGirisWithBitisTarResponse" name="kapsamGirisWithBitisTarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="yurtDisiKapsamSilAndGirisWithBitisTar">
+      <wsdl:input message="impl:yurtDisiKapsamSilAndGirisWithBitisTarRequest" name="yurtDisiKapsamSilAndGirisWithBitisTarRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:yurtDisiKapsamSilAndGirisWithBitisTarResponse" name="yurtDisiKapsamSilAndGirisWithBitisTarResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamSilTumForSicilveKapsam">
+      <wsdl:input message="impl:kapsamSilTumForSicilveKapsamRequest" name="kapsamSilTumForSicilveKapsamRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:kapsamSilTumForSicilveKapsamResponse" name="kapsamSilTumForSicilveKapsamResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpasTescilForOnlySicilOrTc">
+      <wsdl:input message="impl:getSpasTescilForOnlySicilOrTcRequest" name="getSpasTescilForOnlySicilOrTcRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getSpasTescilForOnlySicilOrTcResponse" name="getSpasTescilForOnlySicilOrTcResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sureliGirisSilBySpasTesID">
+      <wsdl:input message="impl:sureliGirisSilBySpasTesIDRequest" name="sureliGirisSilBySpasTesIDRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:sureliGirisSilBySpasTesIDResponse" name="sureliGirisSilBySpasTesIDResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpasTescilKapsam">
+      <wsdl:input message="impl:getSpasTescilKapsamRequest" name="getSpasTescilKapsamRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:getSpasTescilKapsamResponse" name="getSpasTescilKapsamResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bakmaklaYukumluGiris">
+      <wsdl:input message="impl:bakmaklaYukumluGirisRequest" name="bakmaklaYukumluGirisRequest">
+    </wsdl:input>
+      <wsdl:output message="impl:bakmaklaYukumluGirisResponse" name="bakmaklaYukumluGirisResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SpasIslemlerSoapBinding" type="impl:SpasIslemler">
+<wsaw:UsingAddressing wsdl:required="false"/>
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="kapsamSilAndGirisWithBitisTar">
+      <wsdlsoap:operation soapAction="kapsamSilAndGirisWithBitisTar"/>
+      <wsdl:input name="kapsamSilAndGirisWithBitisTarRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kapsamSilAndGirisWithBitisTarResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sureliGirisWithBitisTar">
+      <wsdlsoap:operation soapAction="sureliGirisWithBitisTar"/>
+      <wsdl:input name="sureliGirisWithBitisTarRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sureliGirisWithBitisTarResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamSilBySpasTesID">
+      <wsdlsoap:operation soapAction="kapsamSilBySpasTesID"/>
+      <wsdl:input name="kapsamSilBySpasTesIDRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kapsamSilBySpasTesIDResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kimlikdenKpsNufusGetirVeGuncelle">
+      <wsdlsoap:operation soapAction="kimlikdenKpsNufusGetirVeGuncelle"/>
+      <wsdl:input name="kimlikdenKpsNufusGetirVeGuncelleRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kimlikdenKpsNufusGetirVeGuncelleResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpasTescilBySpasTesID">
+      <wsdlsoap:operation soapAction="getSpasTescilBySpasTesID"/>
+      <wsdl:input name="getSpasTescilBySpasTesIDRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSpasTescilBySpasTesIDResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="yurtDisiSigortaliDetayBilgileriGuncelle">
+      <wsdlsoap:operation soapAction="yurtDisiSigortaliDetayBilgileriGuncelle"/>
+      <wsdl:input name="yurtDisiSigortaliDetayBilgileriGuncelleRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="yurtDisiSigortaliDetayBilgileriGuncelleResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sureliGirisGuncelleBySpasTesID">
+      <wsdlsoap:operation soapAction="sureliGirisGuncelleBySpasTesID"/>
+      <wsdl:input name="sureliGirisGuncelleBySpasTesIDRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sureliGirisGuncelleBySpasTesIDResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="yurtDisiKapsamGiris">
+      <wsdlsoap:operation soapAction="yurtDisiKapsamGiris"/>
+      <wsdl:input name="yurtDisiKapsamGirisRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="yurtDisiKapsamGirisResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpasTescilForSicilOrTcWithKapsamID">
+      <wsdlsoap:operation soapAction="getSpasTescilForSicilOrTcWithKapsamID"/>
+      <wsdl:input name="getSpasTescilForSicilOrTcWithKapsamIDRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSpasTescilForSicilOrTcWithKapsamIDResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamGiris">
+      <wsdlsoap:operation soapAction="kapsamGiris"/>
+      <wsdl:input name="kapsamGirisRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kapsamGirisResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpasSureliGiris">
+      <wsdlsoap:operation soapAction="getSpasSureliGiris"/>
+      <wsdl:input name="getSpasSureliGirisRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSpasSureliGirisResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamBitis">
+      <wsdlsoap:operation soapAction="kapsamBitis"/>
+      <wsdl:input name="kapsamBitisRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kapsamBitisResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="yurtDisiKapsamGirisWithBitisTar">
+      <wsdlsoap:operation soapAction="yurtDisiKapsamGirisWithBitisTar"/>
+      <wsdl:input name="yurtDisiKapsamGirisWithBitisTarRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="yurtDisiKapsamGirisWithBitisTarResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamSil">
+      <wsdlsoap:operation soapAction="kapsamSil"/>
+      <wsdl:input name="kapsamSilRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kapsamSilResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamSilTumForTCveKapsam">
+      <wsdlsoap:operation soapAction="kapsamSilTumForTCveKapsam"/>
+      <wsdl:input name="kapsamSilTumForTCveKapsamRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kapsamSilTumForTCveKapsamResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamGirisWithBitisTar">
+      <wsdlsoap:operation soapAction="kapsamGirisWithBitisTar"/>
+      <wsdl:input name="kapsamGirisWithBitisTarRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kapsamGirisWithBitisTarResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="yurtDisiKapsamSilAndGirisWithBitisTar">
+      <wsdlsoap:operation soapAction="yurtDisiKapsamSilAndGirisWithBitisTar"/>
+      <wsdl:input name="yurtDisiKapsamSilAndGirisWithBitisTarRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="yurtDisiKapsamSilAndGirisWithBitisTarResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="kapsamSilTumForSicilveKapsam">
+      <wsdlsoap:operation soapAction="kapsamSilTumForSicilveKapsam"/>
+      <wsdl:input name="kapsamSilTumForSicilveKapsamRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="kapsamSilTumForSicilveKapsamResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpasTescilForOnlySicilOrTc">
+      <wsdlsoap:operation soapAction="getSpasTescilForOnlySicilOrTc"/>
+      <wsdl:input name="getSpasTescilForOnlySicilOrTcRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSpasTescilForOnlySicilOrTcResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sureliGirisSilBySpasTesID">
+      <wsdlsoap:operation soapAction="sureliGirisSilBySpasTesID"/>
+      <wsdl:input name="sureliGirisSilBySpasTesIDRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sureliGirisSilBySpasTesIDResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSpasTescilKapsam">
+      <wsdlsoap:operation soapAction="getSpasTescilKapsam"/>
+      <wsdl:input name="getSpasTescilKapsamRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSpasTescilKapsamResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bakmaklaYukumluGiris">
+      <wsdlsoap:operation soapAction="bakmaklaYukumluGiris"/>
+      <wsdl:input name="bakmaklaYukumluGirisRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="bakmaklaYukumluGirisResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SpasIslemlerService">
+    <wsdl:port binding="impl:SpasIslemlerSoapBinding" name="SpasIslemler">
+      <wsdlsoap:address location="http://spas.sgk.intra:80/spasws/services/SpasIslemler"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
