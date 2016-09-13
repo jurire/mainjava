@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:pe="http://primefaces.org/ui/extensions"
+	template="/WEB-INF/template.xhtml">
+    <ui:define name="head">
+        <style type="text/css">
+            .value {
+                font-weight: bold
+            }
+        </style>
+        <script>
+        	function afterNewRow () {
+        		debugger;
+        		var modelList = PF('modelList'); 
+        		var row = modelList.findRow(0);
+        		modelList.switchToRowEdit(row);
+        	}
+        </script>	
+    </ui:define>
+    
+	<ui:define name="source">
+	<h:form>
+		<p:growl id="msgs" showDetail="true"/>
+		<p:wizard widgetVar="paramWizard" flowListener="#{parameterMB.onFlowProcess}" showNavBar="false">
+			<p:tab id="parametreListesi" title="Parametreler">
+				<p:messages showDetail="true" />
+		        <p:dataTable id="paramList" value="#{parameterMB.paramList}" var="objParam">
+		            <p:column headerText="Parametreler">
+		                <p:commandLink value="#{objParam.ad}" oncomplete="PF('paramWizard').next();">
+		                	<f:setPropertyActionListener value="#{objParam}" target="#{parameterMB.selectedParameter}" />
+		                </p:commandLink>
+		            </p:column>
+		        </p:dataTable>
+			</p:tab>
+			<p:tab id="details" title="Ayrıntılar">
+				<p:dataTable id="modelList" rowKey="#{obj['id']}" widgetVar="modelList" var="obj" value="#{parameterMB.data}" editable="true">
+					<f:facet name="header">
+						<p:commandButton value="Yeni" process="@this" update="modelList" action="#{parameterMB.actionYeniParametre()}" oncomplete="afterNewRow();" icon="ui-icon-plus"/>					
+						#{parameterMB.detailsTitle}
+					</f:facet>
+					
+					<p:ajax event="rowEdit" listener="#{parameterMB.onRowEdit}" update="@form:msgs" />
+       				<p:ajax event="rowEditCancel" listener="#{parameterMB.onRowCancel}" update="@form:msgs" />
+       				
+					<p:columns value="#{parameterMB.columns}" var="column" headerText="#{column.header}">
+						<p:cellEditor rendered="#{column.property ne 'aktifMi'}">
+							<f:facet name="output"><h:outputText value="#{obj[column.property]}" /></f:facet>
+							<f:facet name="input"><p:inputText id="modelInput" value="#{obj[column.property]}" style="width:100%"/></f:facet>
+						</p:cellEditor>					
+						<p:cellEditor rendered="#{column.property eq 'aktifMi'}">
+							<f:facet name="output"><h:outputText value="#{obj[column.property]}" /></f:facet>
+							<f:facet name="input">
+								<p:selectBooleanCheckbox value="#{obj[column.property]}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>					
+					</p:columns>
+					<p:column style="width:32px">
+						<p:rowEditor />
+					</p:column>					
+				</p:dataTable>
+				<p:commandButton value="Parametreler" icon="ui-icon-arrow-1-w" iconPos="left" onclick="PF('paramWizard').back()" />
+			</p:tab>
+		</p:wizard>
+	</h:form> 			
+	</ui:define>
+</ui:composition>

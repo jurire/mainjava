@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="sgep.base.web">
+        <wb-resource deploy-path="/" source-path="/src/main/java" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/" source-path="/src/main/resources"/>
+        <dependent-module archiveName="utility-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sgep.utility/sgep.utility">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="base-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sgep.base/sgep.base">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="base.api-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sgep.base.api/sgep.base.api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="base.report-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sgep.base.report/sgep.base.report">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="base.model-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sgep.base.model/sgep.base.model">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="base.primefaces-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/sgep.base.primefaces/sgep.base.primefaces">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

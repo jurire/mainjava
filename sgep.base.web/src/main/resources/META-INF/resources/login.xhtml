@@ -1,0 +1,50 @@
+<!DOCTYPE html [
+    <!ENTITY nbsp "&#160;">
+    <!ENTITY bull "&#8226;">
+    <!ENTITY copy "&#169;">
+]>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <h:outputScript name="jquery/jquery.js" library="primefaces" />
+    <h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+    <title>Sgep | Giriş</title>
+</h:head>
+<f:event type="preRenderView" listener="#{loginBean.onPageLoad}"/>
+<h:body>
+        <h:form id="loginFormxx">
+        
+			<p:fieldset legend="Kullanıcılar" style="margin-bottom:20px">
+		        <h:panelGrid columns="2" cellpadding="5">
+		            <h:outputText escape="false"
+		                value="
+		                	test veya admin girilebilir :: DefaultAuthenticationProvider
+		                	admin =>  227 veya 228  :: MeyesAuthenticationProvider &lt;br/&gt;
+		                	gidilecek sayfa -> /pages/secure/home.xhtml
+		                " />
+		        </h:panelGrid>
+		    </p:fieldset>
+		    
+			<p:growl id="messages"></p:growl>
+            <p:panel header="#{msg.get('login.giris')}" style="width: 360px;">
+                <h:panelGrid id="loginPanel" columns="2">
+                    <h:outputText value="Sicil No" />
+                    <p:inputText id="username" value="#{loginBean.uname}" ></p:inputText>
+                    <p:spacer></p:spacer>
+                    <p:message for="username" ></p:message>
+                    <!--  
+                    <h:outputText value="Password" />
+                    <p:password id="password" value="#{loginBean.password}"  feedback="false"></p:password>
+                    <p:spacer></p:spacer>
+                    <p:message for="password"></p:message>
+                    -->
+                    <p:spacer></p:spacer>
+                    <p:commandButton action="#{loginBean.doLogin}" value="Tamam" update="messages" ajax="false"></p:commandButton>
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+</h:body>        
+</html>

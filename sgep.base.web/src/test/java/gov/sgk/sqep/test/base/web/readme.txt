@@ -1,0 +1,1 @@
+mvn -Ptomcat-test clean tomcat7:run

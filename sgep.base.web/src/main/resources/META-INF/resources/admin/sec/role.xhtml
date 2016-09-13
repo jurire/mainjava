@@ -1,0 +1,113 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/WEB-INF/template.xhtml">
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-datatable table {
+                table-layout: fixed
+            }
+            
+            .value {
+                font-weight: bold
+            }
+        </style>	
+    </ui:define>
+	<ui:define name="source">
+		<h:form id="roleDataForm">
+			<p:messages showDetail="true" showSummary="false" />
+			<p:dataTable var="role" value="#{secRoleMB.roles}">
+				<f:facet name="header">
+					<h:outputLabel value="Roller"></h:outputLabel>
+					<p:commandButton value="Yeni" icon="ui-icon-plus"
+						action="#{secRoleMB.actionArrange('new')}" 
+						update="roleForm:rolePanel" 
+						oncomplete="PF('roleDialog').show()" />				
+			    </f:facet>			
+				<p:column headerText="Id">
+					<h:outputText value="#{role.id}" />
+				</p:column>
+				<p:column headerText="Rol İsmi">
+					<h:outputText value="#{role.isim}" />
+				</p:column>
+				<p:column headerText="Modül Adı">
+					<h:outputText value="#{role.modulAdi}" />
+				</p:column>
+				<p:column headerText="Aktif">
+					<h:outputText value="#{role.aktifMi}" />
+				</p:column>
+				<p:column style="width:24px">
+					<p:commandLink update="roleForm:rolePanel"
+						oncomplete="PF('roleDialog').show()" 
+						title="View Detail"
+						styleClass="ui-icon ui-icon-search" action="#{secRoleMB.actionArrange('update')}">
+						<f:setPropertyActionListener value="#{role}" target="#{secRoleMB.selectedRole}" />
+					</p:commandLink>
+				</p:column>
+				<p:column style="width:24px">
+					<p:commandLink 
+						oncomplete="PF('roleMenuDialog').show()"
+						update="roleMenuForm:roleMenuPanel" 
+						title="Role - Menü Atamaları"
+						styleClass="ui-icon ui-icon-menu" action="#{secRoleMB.actionArrange('menu')}">
+						<f:setPropertyActionListener value="#{role}" target="#{secRoleMB.selectedRole}" />
+					</p:commandLink>
+				</p:column>
+				<p:column style="width:24px">
+					<p:commandLink 
+						title="Sil"
+						styleClass="ui-icon ui-icon-trash" actionListener="#{secRoleMB.actionDelete(role)}" update="roleDataForm">
+						<p:confirm header="Onay" message="Silmek istediğinize emin misiniz? \n #{role}" icon="ui-icon-alert" />
+					</p:commandLink>
+				</p:column>					
+			</p:dataTable>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		        <p:commandButton value="#{lbls['lbl.evet']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="#{lbls['lbl.hayir']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>				
+		</h:form>
+		
+		<p:dialog id="roleDialog" header="Rol Ayrıntı" showEffect="fade" widgetVar="roleDialog" modal="false" resizable="false" closeOnEscape="true" dynamic="true">
+			<h:form id="roleForm">
+				<p:outputPanel id="rolePanel">
+					<p:panelGrid columns="2" columnClasses="label,value">
+						<p:outputLabel value="Id" />
+						<p:inputText value="#{secRoleMB.selectedRole.id}" style="font-weight:bold" readonly="true"/>
+						<p:outputLabel value="İsim" />
+						<p:inputText value="#{secRoleMB.selectedRole.isim}" style="font-weight:bold" required="true" label="İsim"/>
+						<p:outputLabel value="Modül"/>
+						<p:selectOneMenu value="#{secRoleMB.selectedRole.modulAdi}" style="width:150px" required="true" label="Modül">
+							<f:selectItem itemLabel="#{lbls['lbl.modul.seciniz']}" itemValue="" noSelectionOption="true" />
+							<f:selectItems value="#{appMB.modulMap}" />
+						</p:selectOneMenu>
+						<p:outputLabel value="Aktif" />
+						<p:selectBooleanCheckbox value="#{secRoleMB.selectedRole.aktifMi}" style="font-weight:bold" label="Aktif"/>
+												
+            		</p:panelGrid>
+          	        <p:commandButton action="#{secRoleMB.actionProcessRole}" value="Tamam" update="roleDataForm" />
+				</p:outputPanel>
+			</h:form>
+		</p:dialog>	
+		
+		<p:dialog id="roleMenuDialog" header="Rol - Menü Atamaları" showEffect="fade" widgetVar="roleMenuDialog" modal="false" resizable="true" width="500px" closeOnEscape="true" dynamic="true">
+			<h:form id="roleMenuForm">
+				<p:outputPanel id="roleMenuPanel">
+					<p:outputLabel value="#{secRoleMB.selectedRole}"></p:outputLabel>
+					<p:separator />
+					<p:treeTable value="#{secRoleMB.roleSelectedMenuTreeNode}" var="menu" widgetVar="roleMenuTreeForm" selectionMode="checkbox" selection="#{secRoleMB.selectedMenuNodes}">
+						<f:facet name="header">Menüler</f:facet>
+						<p:column headerText="İsim">
+							<h:outputText value="#{menu.isim}" />
+						</p:column>
+						<p:column headerText="Modül Adı">
+							<h:outputText value="#{menu.modulAdi}" />
+						</p:column>
+					</p:treeTable>
+          	        <p:commandButton action="#{secRoleMB.actionUpdateRoleMenu}" value="Tamam" update="roleDataForm"/>
+				</p:outputPanel>
+			</h:form>
+		</p:dialog>				
+	</ui:define>
+</ui:composition>

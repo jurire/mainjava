@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/WEB-INF/template.xhtml">
+    <ui:define name="head">
+        <style type="text/css">
+            .ui-treetable table {
+                table-layout: fixed
+            }
+            
+            .value {
+                font-weight: bold
+            }
+        </style>	
+    </ui:define>
+	<ui:define name="source">
+		<h:form id="menuTreeForm">
+			<p:messages showDetail="true" showSummary="false" />
+			<p:treeTable value="#{secMenuMB.root}" var="menu" selection="#{secMenuMB.selectedRow}" selectionMode="single" widgetVar="menuTreeForm"
+				filteredValue="#{secMenuMB.filteredRoot}">
+				<f:facet name="header">Menüler</f:facet>
+				<p:column headerText="İsim">
+					<h:outputText value="#{menu.isim}" />
+				</p:column>
+				<p:column headerText="Command">
+					<h:outputText value="#{menu.command}" />
+				</p:column>
+				<p:column headerText="Icon">
+					<h:outputText value="#{menu.icon}" />
+				</p:column>
+				<p:column headerText="Modül Adı">
+					<f:facet name="header">
+						<p:selectOneMenu id="country" value="#{secMenuMB.modul}" style="width:150px">
+							<f:selectItem itemLabel="#{lbls['lbl.modul.seciniz']}" itemValue="" noSelectionOption="true" />
+							<f:selectItems value="#{appMB.modulMap}" />
+							<p:ajax process="@all" update="menuTreeForm" listener="#{secMenuMB.filterByModulAdi}" />
+						</p:selectOneMenu>            			
+					</f:facet>
+					<h:outputText value="#{menu.modulAdi}" />
+				</p:column>
+				<p:column style="width:24px">
+					<p:commandLink update="menuForm:menuPanel"
+						oncomplete="PF('menuDialog').show()" 
+						title="View Detail"
+						styleClass="ui-icon ui-icon-search" action="#{secMenuMB.actionArrange('update')}" 
+						rendered="#{not menu.isVirtual()}">
+						<f:setPropertyActionListener value="#{menu}" target="#{secMenuMB.selectedMenu}" />
+					</p:commandLink>
+				</p:column>
+				<p:column style="width:24px">
+					<p:commandLink update="menuForm:menuPanel"
+						oncomplete="PF('menuDialog').show()" 
+						title="Yeni Ekle"
+						styleClass="ui-icon ui-icon-plus" action="#{secMenuMB.actionArrange('new')}">
+						<f:setPropertyActionListener value="#{menu}" target="#{secMenuMB.newMenuParent}" />
+					</p:commandLink>
+				</p:column>	
+				<p:column style="width:24px">
+					<p:commandLink 
+						title="Sil"
+						styleClass="ui-icon ui-icon-trash" actionListener="#{secMenuMB.actionDelete(menu)}" update="menuTreeForm"
+						rendered="#{not menu.isVirtual()}">
+						<p:confirm message="Silmek istediğinize emin misiniz?" icon="ui-icon-alert" />
+					</p:commandLink>
+				</p:column>					
+			</p:treeTable>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		        <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>			
+		</h:form>
+		
+		<p:dialog id="dialog" header="Menü Ayrıntı" showEffect="fade" widgetVar="menuDialog" modal="false" resizable="false">
+			<h:form id="menuForm">
+				<p:messages showDetail="true" showSummary="false" />
+				<p:outputPanel id="menuPanel">
+					<p:panelGrid columns="2" columnClasses="label,value" rendered="#{not empty secMenuMB.selectedMenu}">
+						<p:outputLabel value="Üst Menü" rendered="#{secMenuMB.isNew()}" />
+						<p:outputLabel value="#{secMenuMB.newMenuParent.id}" style="font-weight:bold" rendered="#{secMenuMB.isNew()}"/>
+						
+						
+						<p:outputLabel value="İsim" />
+						<p:inputText value="#{secMenuMB.selectedMenu.isim}" style="font-weight:bold" />
+						<p:outputLabel value="Command" />
+						<p:inputText value="#{secMenuMB.selectedMenu.command}" style="font-weight:bold" />
+						<p:outputLabel value="Url" />
+						<p:inputText value="#{secMenuMB.selectedMenu.url}" style="font-weight:bold" />
+						<p:outputLabel value="Icon" />
+						<p:inputText value="#{secMenuMB.selectedMenu.icon}" style="font-weight:bold" />
+						<p:outputLabel value="Modül" />
+						<p:selectOneMenu value="#{secMenuMB.selectedMenu.modulAdi}" style="width:150px" required="true" label="Modül">
+							<f:selectItem itemLabel="#{lbls['lbl.modul.seciniz']}" itemValue="" noSelectionOption="true" />
+							<f:selectItems value="#{appMB.modulMap}" />
+						</p:selectOneMenu>    
+            		</p:panelGrid>
+          	        <p:commandButton action="#{secMenuMB.actionProcessMenu}" value="Tamam" update="menuTreeForm" />
+				</p:outputPanel>
+			</h:form>
+		</p:dialog>		
+	</ui:define>
+</ui:composition>
