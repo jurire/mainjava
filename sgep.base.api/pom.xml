@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>gov.sgk.sgep</groupId>
+	<artifactId>base.api</artifactId>
+	<version>0.0.1</version>
+	<packaging>jar</packaging>
+	<organization>
+		<name>SGK</name>
+	</organization>
+	<name>SGEP Base API</name>
+	<description>SGEP kapsamında ana uygulama çatısı API'si. Burada 
+Annotations
+JSON
+Hibernate
+tanımları, utility metotları ve ilgili arayüzler tanımlanır.</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.source>1.7</java.source>
+		<java.target>1.7</java.target>
+		<hibernate.version>4.3.5.Final</hibernate.version>
+		<hibernate.jpa.version>1.0.0.Final</hibernate.jpa.version>
+		<hibernate.validator.version>5.2.2.Final</hibernate.validator.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<version>${hibernate.jpa.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator-cdi</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.30</version>
+		</dependency>
+		<!-- <dependency>
+				<groupId>com.ibm.db2</groupId>
+				<artifactId>db2jcc</artifactId>
+				<version>10.5</version>
+		</dependency> -->		
+		<dependency>
+		   <groupId>javax.el</groupId>
+		   <artifactId>javax.el-api</artifactId>
+		   <version>2.2.4</version>
+		</dependency>
+		<dependency>
+		   <groupId>org.glassfish.web</groupId>
+		   <artifactId>javax.el</artifactId>
+		   <version>2.2.4</version>
+		</dependency>		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>		
+		
+		<dependency>
+			<groupId>gov.sgk.sgep</groupId>
+			<artifactId>utility</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.3</version>
+					<configuration>
+						<source>${java.source}</source>
+						<target>${java.target}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
