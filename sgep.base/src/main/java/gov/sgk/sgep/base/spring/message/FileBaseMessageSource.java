@@ -3,6 +3,8 @@ package gov.sgk.sgep.base.spring.message;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSourceResolvable;
+import org.springframework.context.NoSuchMessageException;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 
 import gov.sgk.sgep.base.api.model.prm.Mesaj;
@@ -23,7 +25,7 @@ public class FileBaseMessageSource extends ReloadableResourceBundleMessageSource
 	public FileBaseMessageSource() {
 		super();
 		setDefaultEncoding("UTF-8");
-		setUseCodeAsDefaultMessage(true);
+		setUseCodeAsDefaultMessage(false);
 	}
 	
 	/**
@@ -36,6 +38,7 @@ public class FileBaseMessageSource extends ReloadableResourceBundleMessageSource
 		return getMessage(code, args, getDefaultLocale());
 	}
 	
+
 	public Locale getDefaultLocale () {
 		return systemPropertiesWrapper.getDefaultLocale();
 	}

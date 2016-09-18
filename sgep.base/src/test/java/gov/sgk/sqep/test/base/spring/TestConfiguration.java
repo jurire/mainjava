@@ -58,12 +58,12 @@ public class TestConfiguration extends AConfiguration {
 	
 	@Override
 	protected String[] messageResourceBaseNames() {
-		return new String[]{"messages"};
+		return new String[]{"classpath:messages"};
 	}
 
 	@Override
 	protected String[] labelResourceBaseNames() {
-		return new String[]{"labels"};
+		return new String[]{"classpath:labels"};
 	}
 	
 	

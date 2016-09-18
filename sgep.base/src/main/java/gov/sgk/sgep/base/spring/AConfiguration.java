@@ -35,14 +35,16 @@ public abstract class AConfiguration {
 	protected Logger LOGGER = LoggerFactory.getLogger(this.getClass().getSimpleName());
 	
 	/**
-	 * eğer classpath'de aranacaksa, örneğin; <b>classpath:messages</b> şeklinde dönmelisiniz<br>
+	 * eğer classpath'de aranacaksa, örneğin; <b>classpath:messages</b> şeklinde dönmelisiniz<br/>
+	 * dosya sistemindeyse <b>file:/resources/messages</b> şeklinde path dönebilirsiniz.<br/> 
 	 * Bu dönülen değerler file tabanlı kaynaklar için gereklidir. Eğer mesajları veri tabanından ya da başka kaynaktan okuyacaksanız null dönebilirsiniz
 	 * @return dosya bazlı mesajlar base name dizisi, yok ise boş ya da null dönün
 	 */
 	protected abstract String [] messageResourceBaseNames();
 	
 	/**
-	 * eğer classpath'de aranacaksa, örneğin; <b>classpath:labels</b> şeklinde dönebilirsiniz<br>
+	 * eğer classpath'de aranacaksa, örneğin; <b>classpath:labels</b> şeklinde dönebilirsiniz<br/>
+	 * dosya sistemindeyse <b>file:/resources/labels</b> şeklinde path dönebilirsiniz.<br/> 
 	 * Bu dönülen değerler file tabanlı kaynaklar için gereklidir. Eğer label'ları veri tabanından ya da başka kaynaktan okuyacaksanız null dönebilirsiniz 
 	 * @return dosya bazlı mesajlar base name dizisi, yok ise boş ya da null dönün
 	 */

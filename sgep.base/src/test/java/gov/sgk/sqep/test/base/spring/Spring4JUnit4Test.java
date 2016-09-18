@@ -1,8 +1,6 @@
 package gov.sgk.sqep.test.base.spring;
 
 import static org.junit.Assert.assertTrue;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import java.io.Serializable;
 import java.net.MalformedURLException;
@@ -18,7 +16,6 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -38,8 +35,6 @@ import org.springframework.test.context.jdbc.SqlGroup;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -106,6 +101,11 @@ public class Spring4JUnit4Test {
 	@Autowired @Qualifier ("domainUserServiceTest")	
 	IDomainUserService domainUserServiceTest;
 
+	@org.junit.Before
+	public void setup () {
+		AServiceAspect.DISABLE_SECURITY_FOR_TEST = true;
+	}
+	
 	@Test
 	public void testSessionFactory() {
 		assertTrue(applicationContext.getBean("sessionFactory") != null);
@@ -193,9 +193,10 @@ public class Spring4JUnit4Test {
 		IMessageSource ms = applicationContext.getBean("messageSource", IMessageSource.class);
 		Assert.assertEquals("default msg1", ms.getMessage("msg1", null, Locale.ENGLISH));
 		Assert.assertEquals("varsayılan msg1", ms.getMessage("msg1", null, SgepConstants.LOCALE_TURKISH));
-		if (applicationContext.getBean(SystemPropertiesWrapper.class).getDefaultLocale().equals(SgepConstants.LOCALE_TURKISH)) {
+		SystemPropertiesWrapper spw = applicationContext.getBean(SystemPropertiesWrapper.class);
+		if (SgepConstants.LOCALE_TURKISH.equals(spw.getDefaultLocale())) {
 			Assert.assertEquals(ms.getMessage("msg1"), "varsayılan msg1");
-		} else if (applicationContext.getBean(SystemPropertiesWrapper.class).getDefaultLocale().equals(Locale.ENGLISH)) {
+		} else if (Locale.ENGLISH.equals(spw.getDefaultLocale())) {
 			Assert.assertEquals(ms.getMessage("msg1"), "default msg1");
 		}
 	}
@@ -205,9 +206,11 @@ public class Spring4JUnit4Test {
 		IMessageSource ms = applicationContext.getBean("labelSource", IMessageSource.class);
 		Assert.assertEquals("deneme.lbl1.en", ms.getMessage("label1", null, Locale.ENGLISH));
 		Assert.assertEquals("deneme.lbl1", ms.getMessage("label1", null, SgepConstants.LOCALE_TURKISH));
-		if (applicationContext.getBean(SystemPropertiesWrapper.class).getDefaultLocale().equals(SgepConstants.LOCALE_TURKISH)) {
+		SystemPropertiesWrapper spw = applicationContext.getBean(SystemPropertiesWrapper.class);
+		
+		if (SgepConstants.LOCALE_TURKISH.equals(spw.getDefaultLocale())) {
 			Assert.assertEquals(ms.getMessage("msg1"), "deneme.lbl1");
-		} else if (applicationContext.getBean(SystemPropertiesWrapper.class).getDefaultLocale().equals(Locale.ENGLISH)) {
+		} else if (Locale.ENGLISH.equals(spw.getDefaultLocale())) {
 			Assert.assertEquals(ms.getMessage("msg1"), "deneme.lbl1.en");
 		}
 	}
