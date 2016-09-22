@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import gov.sgk.sgep.base.api.business.IDomainUserService;
 import gov.sgk.sgep.base.api.domain.DomainUser;
 
 /**
@@ -38,9 +36,6 @@ public class LoginController implements InitializingBean {
 	public static final String URL_REDIRECT_LOGIN_SUCCESS = "/";
 	public static final String URL_REDIRECT_LOGIN_FAIL = "/login?error";
 	
-	@Autowired @Qualifier ("domainUserServiceTest")
-	IDomainUserService domainUserService;
-
 	@Autowired
 	AuthenticationManager authenticationManager;
 
@@ -50,6 +45,15 @@ public class LoginController implements InitializingBean {
 		DomainUser user = new DomainUser();
 		model.addObject("user", user);
 		return model;
+	}
+	
+	@RequestMapping(value = { "/", "/public**" }, method = RequestMethod.GET)
+	public ModelAndView publicPage() {
+		ModelAndView model = new ModelAndView("index");
+		model.addObject("title", "Spring Security Hello World");
+		model.addObject("message", "This is welcome page!");
+		return model;
+
 	}
 
 	@RequestMapping(value = URL_LOGIN, method = RequestMethod.POST)

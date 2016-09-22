@@ -15,12 +15,14 @@ import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import gov.sgk.sgep.base.spring.AConfiguration;
@@ -153,6 +155,30 @@ public class TestConfiguration extends AConfiguration implements WebMvcConfigure
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();		
+	}
+
+	@Override
+	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> exceptionResolvers) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void configureViewResolvers(ViewResolverRegistry registry) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addCorsMappings(CorsRegistry registry) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
